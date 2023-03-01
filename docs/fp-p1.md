@@ -63,7 +63,11 @@ public class Main {
 
 1. Utilice expresiones *lambda* y el API de *streams* de Java para cambiar la implementación de las operaciones de la interfaz `DataOperations` usando los mecanismos de la programación funcional.
 
+El uso de las funciones proporcionadas por HashSet de Java de forma directa no es adecuado si se hace uso de la herencia. La superclase HashSet ya registra el número de elementos almacenados en el conjunto, lo que significa que no es necesario tener un atributo adicional para este propósito. Además, debido a la adición duplicada de datos, el valor devuelto por el método "getNumberOfAddedElements" será 6.
+
 2. Además, haciendo uso de expresiones *labmda* y del API de *streams*, añada a la interfaz de `DataOperations` las siguientes operaciones y su implementación:
+
+
 
 - Operación que devuelva la lista de números ordenada descendentemente.
 - Operación que multiplique todos los números de la lista por 10 e imprima el resultado.
