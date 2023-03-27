@@ -343,6 +343,14 @@ a) El software del ejercicio anterior ha evolucionado añadiendo nueva funcional
 
 b) En el caso de que la implementación necesite la aplicación de refactoring, realice los cambios oportunos e indique las mejoras que aporta su implementación respecto a la original.
 
+### Respuestas
+
+a) En efecto, en esta versión del código se siguen presentando algunos de los problemas mencionados en la lista del ejercicio anterior, como la falta de encapsulamiento de los mapas de usuarios con puntos, el uso de nombres de variables poco descriptivos y la falta de modularidad. Además, se agrega un nuevo problema, que es la duplicación de código al repetir las mismas operaciones para cada uno de los grupos de usuarios. Esto puede llevar a una mayor complejidad del código, dificultades para su mantenimiento y un aumento en el tiempo de ejecución y consumo de memoria debido a la duplicación de líneas de código.
+
+Es recomendable aplicar un refactoring para solucionar estos problemas. Si no se hace, es probable que el código se vuelva cada vez más difícil de mantener y que se haga cada vez más complicado agregar nuevas funcionalidades en el futuro.
+
+b) En el archivo "PJava2E2.java" se muestra una posible solución para aplicar el refactoring al código. En lugar de repetir las mismas operaciones para cada grupo de usuarios, se utiliza una sola función lambda para cada grupo que encapsula todas las operaciones necesarias para obtener la lista de usuarios en orden descendente por puntos y con nombres en mayúsculas. Además, se han eliminado los nombres de variables poco descriptivos y se ha mejorado la modularidad del código. Con esta implementación, se reduce la duplicación de código y se facilita el mantenimiento y la adición de nuevas funcionalidades en el futuro.
+
 ## Referencias
 
 [Code Complete]: https://www.amazon.es/Code-Complete-Practical-Costruction-Professional/dp/0735619670
