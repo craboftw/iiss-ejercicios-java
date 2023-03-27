@@ -222,7 +222,7 @@ b) En el caso de que la implementación necesite la aplicación de refactoring, 
 ### RESPUESTAS
 - a) Sí, hay varios problemas en la implementación anterior que se encuentran en la lista mencionada. El código presenta duplicación de código, ya que se crean dos listas muy similares dentro de la misma función. Además, el nombre de la función "getUsers" no aclara claramente su objetivo y puede causar confusión. La función también tiene más de una responsabilidad, ya que ordena la lista de usuarios además de devolverla. Si no se realiza refactoring, esto podría causar problemas en el futuro, como dificultades para realizar cambios y mantenimiento en el código, y una mayor complejidad y tiempo de ejecución.
 
-b) Para realizar el refactoring, se puede simplificar la función "getUsers" y solucionar los problemas identificados. En lugar de crear dos listas, se puede encadenar la función "map" en la función "sorted" para convertir los nombres de usuario a mayúsculas mientras se ordenan, eliminando la necesidad de crear una lista separada. Además, se puede renombrar la función "getUsers" a "getSortedUsers" para aclarar su objetivo. Finalmente, se puede dividir la función en dos funciones distintas, una para ordenar los usuarios y otra para capitalizar sus nombres, para cumplir con el principio de única responsabilidad. El código refactorizado quedaría así:
+- b) Para realizar el refactoring, se puede simplificar la función "getUsers" y solucionar los problemas identificados. En lugar de crear dos listas, se puede encadenar la función "map" en la función "sorted" para convertir los nombres de usuario a mayúsculas mientras se ordenan, eliminando la necesidad de crear una lista separada. Además, se puede renombrar la función "getUsers" a "getSortedUsers" para aclarar su objetivo. Finalmente, se puede dividir la función en dos funciones distintas, una para ordenar los usuarios y otra para capitalizar sus nombres, para cumplir con el principio de única responsabilidad. El código refactorizado quedaría así:
 
 ```java
 public class GroupOfUsers {
@@ -339,9 +339,9 @@ public class GroupOfUsers {
 
 Responda a las siguientes cuestiones, teniendo en cuenta la lista de los 10 posibles problemas del ejercicio anterior
 
-a) El software del ejercicio anterior ha evolucionado añadiendo nueva funcionalidad en su implementación. ¿Existe algún tipo de problema en esta versión de la implementación de los que se incluyen en la lista? ¿Es necesario aplicar refactoring en este caso? En el caso de que existan problemas, indique cuáles son y qué tipos de problemas piensa que generarían en el futuro si no se aplica el refactoring ahora.
+- a) El software del ejercicio anterior ha evolucionado añadiendo nueva funcionalidad en su implementación. ¿Existe algún tipo de problema en esta versión de la implementación de los que se incluyen en la lista? ¿Es necesario aplicar refactoring en este caso? En el caso de que existan problemas, indique cuáles son y qué tipos de problemas piensa que generarían en el futuro si no se aplica el refactoring ahora.
 
-b) En el caso de que la implementación necesite la aplicación de refactoring, realice los cambios oportunos e indique las mejoras que aporta su implementación respecto a la original.
+- b) En el caso de que la implementación necesite la aplicación de refactoring, realice los cambios oportunos e indique las mejoras que aporta su implementación respecto a la original.
 
 ### Respuestas
 
