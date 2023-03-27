@@ -219,6 +219,38 @@ a) ¿Existe algún tipo de problema en la implementación anterior de los que se
 
 b) En el caso de que la implementación necesite la aplicación de refactoring, realice los cambios oportunos e indique las mejoras que aporta su implementación respecto a la original.
 
+###RESPUESTAS
+
+- a) Sí, hay varios problemas en la implementación anterior que se encuentran en la lista mencionada. El código presenta duplicación de código, ya que se crean dos listas muy similares dentro de la misma función. Además, el nombre de la función "getUsers" no aclara claramente su objetivo y puede causar confusión. La función también tiene más de una responsabilidad, ya que ordena la lista de usuarios además de devolverla. Si no se realiza refactoring, esto podría causar problemas en el futuro, como dificultades para realizar cambios y mantenimiento en el código, y una mayor complejidad y tiempo de ejecución.
+
+b) Para realizar el refactoring, se puede simplificar la función "getUsers" y solucionar los problemas identificados. En lugar de crear dos listas, se puede encadenar la función "map" en la función "sorted" para convertir los nombres de usuario a mayúsculas mientras se ordenan, eliminando la necesidad de crear una lista separada. Además, se puede renombrar la función "getUsers" a "getSortedUsers" para aclarar su objetivo. Finalmente, se puede dividir la función en dos funciones distintas, una para ordenar los usuarios y otra para capitalizar sus nombres, para cumplir con el principio de única responsabilidad. El código refactorizado quedaría así:
+
+```java
+public class GroupOfUsers {
+
+    private static Map<String, Integer> usersWithPoints = new HashMap<String, Integer>() {{
+        put("User1", 800);
+        put("User2", 550);
+        put("User3", 20);
+        put("User4", 300);
+    }};
+
+    public List<String> getSortedUsers() {
+        return sortUsers().map(String::toUpperCase).collect(Collectors.toList());
+    }
+
+    private Stream<String> sortUsers() {
+        return usersWithPoints.entrySet().stream()
+            .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+            .map(Map.Entry::getKey);
+    }
+}
+```
+
+
+
+Este código refactorizado resuelve los problemas identificados en la implementación original, eliminando la duplicación de código, aclarando el nombre de la función y cumpliendo con el principio de única responsabilidad. También simplifica la función al encadenar las operaciones necesarias en una sola línea de código.
+
 ### Ejercicio 2
 
 Dado los siguientes fragmentos de código, responder a las siguientes preguntas:
