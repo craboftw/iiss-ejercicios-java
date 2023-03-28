@@ -254,7 +254,7 @@ b) Mostrar el mensaje "The database is empty" después de la ejecución de la op
 3. Finalmente, sustituir el fichero `LoginAspect.java` por el fichero `LoginAspect.aj` incluyendo la misma funcionalidad pero utilizando la sintaxis de AspectJ.
 
 ### Respuestas
-- a) Para mostrar el mensaje "The login is required" antes de la ejecución de las operaciones makeTransaction y takeMoneyOut en la clase LoginAspect, podemos utilizar la anotación @Before de AspectJ. La expresión que se debe utilizar para hacer match con estos métodos es "execution(public void Bank.makeTransaction()) || execution(public void Bank.takeMoneyOut())".
+a) Para mostrar el mensaje "The login is required" antes de la ejecución de las operaciones makeTransaction y takeMoneyOut en la clase LoginAspect, podemos utilizar la anotación @Before de AspectJ. La expresión que se debe utilizar para hacer match con estos métodos es "execution(public void Bank.makeTransaction()) || execution(public void Bank.takeMoneyOut())".
 
 Por lo tanto, la implementación sería la siguiente:
 
