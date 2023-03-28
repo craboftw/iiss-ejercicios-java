@@ -100,6 +100,29 @@ public class Main {
 - El método de inyección que se realiza (constructor, propiedad o método).
 - La/s línea/s donde se realiza la inyección de dependencias.
 
+### Respuestas 
+1. Sí, se realiza inyección de dependencias. En concreto, la clase inyectora es `Main`, el servicio es `DBAccess`, y el cliente es `DBClient`. 
+2. Se realiza inyección de dependencias por constructor, como se puede apreciar en la creación de los objetos `DBClient` y `DBAccess` dentro de la clase `Main`:
+
+```java
+DBAccess dbAccessB = new DBAccessB();
+DBClient client = new DBClient(dbAccessB);
+```
+
+
+
+En la segunda parte del código se realiza una inyección de dependencias por método a través del método `setDBAccess` de la clase `DBClient`:
+
+```java
+DBAccess dbAccessA = new DBAccessA();
+client.setDBAccess(dbAccessA);
+```
+
+
+
+En ambas líneas de código se está pasando una instancia de una clase que implementa la interfaz `DBAccess` al constructor y al método `setDBAccess` de la clase `DBClient`, respectivamente.
+
+
 
 ### Ejercicio 2
 
@@ -229,6 +252,48 @@ a) Mostrar el mensaje "The login is required" antes de la ejecución de las oper
 b) Mostrar el mensaje "The database is empty" después de la ejecución de la operación `showUsers`.
 
 3. Finalmente, sustituir el fichero `LoginAspect.java` por el fichero `LoginAspect.aj` incluyendo la misma funcionalidad pero utilizando la sintaxis de AspectJ.
+
+### Respuestas
+- a) Para mostrar el mensaje "The login is required" antes de la ejecución de las operaciones makeTransaction y takeMoneyOut en la clase LoginAspect, podemos utilizar la anotación @Before de AspectJ. La expresión que se debe utilizar para hacer match con estos métodos es "execution(public void Bank.makeTransaction()) || execution(public void Bank.takeMoneyOut())".
+
+Por lo tanto, la implementación sería la siguiente:
+
+```java
+@Before("execution(public void Bank.makeTransaction()) || execution(public void Bank.takeMoneyOut())")
+public void before(JoinPoint joinPoint){
+    System.out.println("The login is required");
+}
+```
+
+
+
+b) Para mostrar el mensaje "The database is empty" después de la ejecución de la operación showUsers en la clase LoginAspect, podemos utilizar la anotación @AfterReturning de AspectJ. La expresión que se debe utilizar para hacer match con este método es "execution(public void Bank.showUsers())".
+
+Por lo tanto, la implementación sería la siguiente:
+
+```java
+@AfterReturning("execution(public void Bank.showUsers())")
+public void afterReturning(JoinPoint joinPoint){
+    System.out.println("The database is empty");
+}
+```
+
+
+
+Finalmente, el archivo LoginAspect.aj con la misma funcionalidad utilizando la sintaxis de AspectJ sería el siguiente:
+
+```java
+public aspect LoginAspect {
+    before() : (execution(public void Bank.makeTransaction()) || execution(public void Bank.takeMoneyOut())) {
+        System.out.println("The login is required");
+    }
+    
+    after() returning : execution(public void Bank.showUsers()) {
+        System.out.println("The database is empty");
+    }
+}
+```
+
 
 
 ## Referencias
