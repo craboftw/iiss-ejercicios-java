@@ -100,6 +100,27 @@ public class Main {
 - El método de inyección que se realiza (constructor, propiedad o método).
 - La/s línea/s donde se realiza la inyección de dependencias.
 
+### Respuestas 
+1. Sí, se realiza inyección de dependencias. En concreto, la clase inyectora es `Main`, el servicio es `DBAccess`, y el cliente es `DBClient`. 
+2. Se realiza inyección de dependencias por constructor, como se puede apreciar en la creación de los objetos `DBClient` y `DBAccess` dentro de la clase `Main`:
+
+```java
+DBAccess dbAccessB = new DBAccessB();
+DBClient client = new DBClient(dbAccessB);
+```
+
+
+
+En la segunda parte del código se realiza una inyección de dependencias por método a través del método `setDBAccess` de la clase `DBClient`:
+
+```java
+DBAccess dbAccessA = new DBAccessA();
+client.setDBAccess(dbAccessA);
+```
+
+
+
+En ambas líneas de código se está pasando una instancia de una clase que implementa la interfaz `DBAccess` al constructor y al método `setDBAccess` de la clase `DBClient`, respectivamente.
 
 ### Ejercicio 2
 
