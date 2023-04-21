@@ -275,6 +275,48 @@ public class Main {
 
 2. Añada un tercer cambio haciendo uso de cierres (*closures*) para realizar la ordenación aleatoria de los elementos, siguiendo el mismo enfoque aplicado con las clases `DataSorterAsc` y `DataSorterDesc` en el apartado anterior.
 
+### Respuesta ejercicio 2
+
+#### Pregunta 1
+
+Se puede utilizar el método `Arrays.sort()` de Java junto con un comparador que se define mediante una expresión lambda para implementar la ordenación ascendente y descendente, en lugar de crear una clase completa.
+
+A continuación se muestra la nueva implementación de las clases `DataSorterAsc` y `DataSorterDesc` utilizando expresiones lambda:
+
+```java
+public class DataSorterAsc implements DataSorter {
+    public String[] sort(String[] data) {
+        Arrays.sort(data, (s1, s2) -> s1.compareTo(s2));
+        return data;
+    }
+}
+
+public class DataSorterDesc implements DataSorter {
+    public String[] sort(String[] data) {
+        Arrays.sort(data, (s1, s2) -> s2.compareTo(s1));
+        return data;
+    }
+}
+```
+
+En este caso, el comparador se implementa utilizando la expresión lambda `(s1, s2) -> s1.compareTo(s2)` para la ordenación ascendente y `(s1, s2) -> s2.compareTo(s1)` para la ordenación descendente.
+
+#### 2. Pregunta 2
+Para realizar la ordenación aleatoria de los elementos, se puede utilizar el método `Collections.shuffle()` de Java para mezclar el orden de los elementos en la lista. A continuación se muestra la implementación de la clase `DataSorterRandom` utilizando expresiones lambda:
+
+```java
+import java.util.Collections;
+
+public class DataSorterRandom implements DataSorter {
+    public String[] sort(String[] data) {
+        Collections.shuffle(Arrays.asList(data));
+        return data;
+    }
+}
+```
+
+En este caso, la ordenación aleatoria se realiza utilizando la expresión lambda `Arrays.asList(data)` que convierte el array en una lista, y `Collections.shuffle()` que mezcla el orden de los elementos en la lista. Luego, se devuelve el array resultante.
+
 ## Referencias
 
 [Java 8 Stream Tutorial]: https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
